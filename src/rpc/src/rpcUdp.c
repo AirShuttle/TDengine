@@ -219,8 +219,8 @@ static void *taosRecvUdpData(void *param) {
 
   while (1) {
     dataLen = recvfrom(pConn->fd, pConn->buffer, RPC_MAX_UDP_SIZE, 0, (struct sockaddr *)&sourceAdd, &addLen);
-    tTrace("%s msg is recv from 0x%x:%hu len:%d", pConn->label, sourceAdd.sin_addr.s_addr, ntohs(sourceAdd.sin_port),
-           dataLen);
+    // tTrace("%s msg is recv from 0x%x:%hu len:%d", pConn->label, sourceAdd.sin_addr.s_addr, ntohs(sourceAdd.sin_port),
+    //       dataLen);
 
     if (dataLen < sizeof(SRpcHead)) {
       tError("%s recvfrom failed, reason:%s\n", pConn->label, strerror(errno));

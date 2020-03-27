@@ -38,6 +38,7 @@ void processShellMsg() {
     }     
 
     tTrace("%d shell msgs are received", numOfMsgs);
+    sleep(5);
 
     for (int i=0; i<numOfMsgs; ++i) {
       taosGetQitem(qall, &rpcMsg);
@@ -115,9 +116,10 @@ void processRequestMsg(SRpcMsg *pMsg) {
 int main(int argc, char *argv[]) {
   SRpcInit rpcInit;
   char     dataName[20] = "server.data";
+  char     localIp[40] = "0.0.0.0";
 
   memset(&rpcInit, 0, sizeof(rpcInit));
-  rpcInit.localIp      = "0.0.0.0";
+  rpcInit.localIp      = localIp;
   rpcInit.localPort    = 7000;
   rpcInit.label        = "SER";
   rpcInit.numOfThreads = 1;
